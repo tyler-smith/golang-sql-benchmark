@@ -16,7 +16,7 @@ import (
 // dbr
 //
 
-func BenchmarkBuilderDbrSimple(b *testing.B) {
+func BenchmarkDbrBuilderSimple(b *testing.B) {
 	sess := dbrSess()
 
 	b.ResetTimer()
@@ -25,7 +25,7 @@ func BenchmarkBuilderDbrSimple(b *testing.B) {
 	}
 }
 
-func BenchmarkBuilderDbrComplex(b *testing.B) {
+func BenchmarkDbrBuilderComplex(b *testing.B) {
 	sess := dbrSess()
 
 	arg_eq1 := dbr.Eq{"f": 2, "x": "hi"}
@@ -60,14 +60,14 @@ func BenchmarkBuilderDbrComplex(b *testing.B) {
 // Squirrel
 //
 
-func BenchmarkBuilderSquirrelSimple(b *testing.B) {
+func BenchmarkSquirrelBuilderSimple(b *testing.B) {
 	b.ResetTimer()
 	for n := 0; n < b.N; n++ {
 		squirrel.Select("id").From("tickets").Where("subdomain_id = ? and (state = ? or state = ?)", 1, "open", "spam").ToSql()
 	}
 }
 
-func BenchmarkBuilderSquirrelComplex(b *testing.B) {
+func BenchmarkSquirrelBuilderComplex(b *testing.B) {
 	arg_eq1 := squirrel.Eq{"f": 2, "x": "hi"}
 	arg_eq2 := map[string]interface{}{"g": 3}
 	arg_eq3 := squirrel.Eq{"h": []int{1, 2, 3}}
