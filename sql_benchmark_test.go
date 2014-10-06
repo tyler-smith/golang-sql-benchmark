@@ -288,8 +288,8 @@ func benchmarkDbrSelectAll(b *testing.B, limit int) {
 			Subject string
 			State   string
 		}{}
-		// _, err := sess.Select("id", "subject", "state").From("tickets").Where("subdomain_id = 1 and (state = 'open' or state = 'spam')").Limit(limit).LoadAll(&tickets)
-		_, err := sess.SelectBySql(query).LoadAll(&tickets)
+		// _, err := sess.Select("id", "subject", "state").From("tickets").Where("subdomain_id = 1 and (state = 'open' or state = 'spam')").Limit(limit).LoadStructs(&tickets)
+		_, err := sess.SelectBySql(query).LoadStructs(&tickets)
 		if err != nil {
 			log.Fatalln(err)
 		}
@@ -306,8 +306,8 @@ func benchmarkDbrSelectAllWithArgs(b *testing.B, limit int) {
 			Subject string
 			State   string
 		}{}
-		// _, err := sess.Select("id", "subject", "state").From("tickets").Where("subdomain_id = ? and (state = ? or state = ?)", 1, "open", "spam").Limit(limit).LoadAll(&tickets)
-		_, err := sess.SelectBySql("select id, subject, state from tickets where subdomain_id = ? and (state = ? or state = ?) limit ?", 1, "open", "spam", limit).LoadAll(&tickets)
+		// _, err := sess.Select("id", "subject", "state").From("tickets").Where("subdomain_id = ? and (state = ? or state = ?)", 1, "open", "spam").Limit(limit).LoadStructs(&tickets)
+		_, err := sess.SelectBySql("select id, subject, state from tickets where subdomain_id = ? and (state = ? or state = ?) limit ?", 1, "open", "spam", limit).LoadStructs(&tickets)
 		if err != nil {
 			log.Fatalln(err)
 		}
