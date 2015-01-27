@@ -11,13 +11,28 @@ A collection of benchmarks for popular Go database/SQL utilities
 *  [Sqlx](https://github.com/jmoiron/sqlx)
 *  [Squirrel](https://github.com/lann/squirrel)
 
-# Benchmarks
+# database/sql SQL Execution Benchmarks:
 
-* **PreparedStatements*** - Run the same query with different prepared statement usage scenarios
-* **SelectIntsN** - Select N ints into a slice
-* **SelectAllN** - Select N records into structs using no query interpolation
-* **SelectAllWithArgs** - Select N records into structs using query interpolation
-* **Builder*** - Build (but don't execute) simple and complex SQL queries
+* **BenchmarkPreparedStatementsNone** - Runs simple queries without query arguments, so database/sql doesn't need to create a prepared statement
+* **BenchmarkPreparedStatementsThrowaway** - Runs queries with query arguments. database/sql must create and then throwaway a prepared statement each time
+* **BenchmarkPreparedStatementsSingle** - Runs queries with query arguments, but creates and reuses the a single prepared statement
+
+
+# Dbr/Sqlx/Gorp SQL Execution Benchmarks:
+Each library under test has the same set of benchmarks, just replace `Dbr` in the examples with `Sqlx` or `Gorp`.
+Each one is run with varying number of rows, N.
+
+* **BenchmarkDbrSelectIntsN** - Select rows of integers into []int64's
+* **BenchmarkDbrSelectAllN** - Select rows into structs using no query arguments
+* **BenchmarkDbrSelectAllWithArgsN** - Select rows into structs using query arguments
+
+# Dbr/Squrrel SQL Building Benchamrks
+Test building (but not executing) various SQL statements
+
+* **BenchmarkBuilderDbrSimple** - Simple SQL query with dbr
+* **BenchmarkBuilderDbrComplex** - Complex SQL query with dbr
+* **BenchmarkBuilderSquirrelSimple** - Simple SQL query with squirrel
+* **BenchmarkBuilderSquirrelComplex** - Complex SQL query with squirrel
 
 # Output
 
