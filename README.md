@@ -92,3 +92,4 @@ BenchmarkBuilderSquirrelComplex       50000        44721     ns/op  11707    B/o
 * Create db: `mysql -e "create database golang_sql_benchmarks;"`
 * Create schema: `mysql golang_sql_benchmarks < structure.sql`
 * Run: `go test -bench=. -benchmem`
+* You can set the MySQL DSN to use by setting the GOLANG_SQL_BENCHMARKS_DSN env var (defaults to root@unix(/var/run/mysqld/mysqld.sock)/golang_sql_benchmarks)
