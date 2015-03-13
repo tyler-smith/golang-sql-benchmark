@@ -36,7 +36,7 @@ Test building (but not executing) various SQL statements
 
 # Output
 
-`go test -bench=. -benchmem 2>/dev/null | column -t` on @tyler-smith's 2.6 GHz i7 Macbook Pro:
+`godep go test -bench=. -benchmem 2>/dev/null | column -t` on @tyler-smith's 2.6 GHz i7 Macbook Pro:
 
 ```
 BenchmarkPreparedStatementsNone       100000       23137     ns/op  612      B/op  20     allocs/op
@@ -88,8 +88,8 @@ BenchmarkBuilderSquirrelComplex       50000        44721     ns/op  11707    B/o
 
 # Run yourself
 
-* Install each library under test (I want to use godep soon so this will not be required)
+* Use the `godep` tool or manually install all libraries under test
 * Create db: `mysql -e "create database golang_sql_benchmarks;"`
 * Create schema: `mysql golang_sql_benchmarks < structure.sql`
-* Run: `go test -bench=. -benchmem`
+* Run: `godep go test -bench=. -benchmem`
 * You can set the MySQL DSN to use by setting the GOLANG_SQL_BENCHMARKS_DSN env var (defaults to root@unix(/var/run/mysqld/mysqld.sock)/golang_sql_benchmarks)

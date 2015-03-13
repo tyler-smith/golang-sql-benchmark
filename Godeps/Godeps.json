@@ -1,0 +1,37 @@
+{
+	"ImportPath": "github.com/tyler-smith/golang-sql-benchmark",
+	"GoVersion": "go1.4.1",
+	"Deps": [
+		{
+			"ImportPath": "github.com/coopernurse/gorp",
+			"Comment": "v1.7-1-g236e138",
+			"Rev": "236e1383df4c6b402e251d3fe2dcea50dab1faf1"
+		},
+		{
+			"ImportPath": "github.com/go-sql-driver/mysql",
+			"Comment": "v1.2",
+			"Rev": "a732e14c62dde3285440047bba97581bc472ae18"
+		},
+		{
+			"ImportPath": "github.com/gocraft/dbr",
+			"Rev": "70e719ac3489f045bdaecc3629b809df74169269"
+		},
+		{
+			"ImportPath": "github.com/jmoiron/sqlx",
+			"Comment": "sqlx-v1.0-67-g69738bd",
+			"Rev": "69738bd209812c5a381786011aff17944a384554"
+		},
+		{
+			"ImportPath": "github.com/lann/builder",
+			"Rev": "c603884a2c1fcf331c71940f3227a8111d29f3ba"
+		},
+		{
+			"ImportPath": "github.com/lann/squirrel",
+			"Rev": "e13dbacee404686afd0acf2d44b8d34869605e03"
+		},
+		{
+			"ImportPath": "github.com/mndrix/ps",
+			"Rev": "33ddf69629c1bcea76b04f4a4e9e00e4cce82eb6"
+		}
+	]
+}
