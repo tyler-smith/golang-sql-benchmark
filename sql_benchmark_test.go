@@ -13,7 +13,7 @@ import (
 	"github.com/jmoiron/sqlx"
 )
 
-const MysqlDSN = "root@unix(/var/run/mysqld/mysqld.sock)/uservoice_dev"
+const MysqlDSN = "root@unix(/var/run/mysqld/mysqld.sock)/golang_sql_benchmarks"
 
 // Attempts to compare different situations regarding use of prepared statements and/or interpolation
 // Use a fairly simple query, but one that allows us to use placeholders or not as per our individual benchmark

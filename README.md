@@ -85,3 +85,10 @@ BenchmarkBuilderDbrComplex            500000       6193      ns/op  2190     B/o
 BenchmarkBuilderSquirrelSimple        200000       8981      ns/op  2780     B/op  51     allocs/op
 BenchmarkBuilderSquirrelComplex       50000        44721     ns/op  11707    B/op  259    allocs/op
 ```
+
+# Run yourself
+
+* Install each library under test (I want to use godep soon so this will not be required)
+* Create db: `mysql -e "create database golang_sql_benchmarks;"`
+* Create schema: `mysql golang_sql_benchmarks < structure.sql`
+* Run: `go test -bench=. -benchmem`
