@@ -3,6 +3,7 @@ package db_sql_benchmark
 import (
 	"database/sql"
 	"log"
+	"os"
 	"strconv"
 	"testing"
 
@@ -13,7 +14,14 @@ import (
 	"github.com/jmoiron/sqlx"
 )
 
-const MysqlDSN = "root@unix(/var/run/mysqld/mysqld.sock)/golang_sql_benchmarks"
+var mysqlDSN string
+
+func init() {
+	mysqlDSN = os.Getenv("GOLANG_SQL_BENCHMARKS_DSN")
+	if mysqlDSN == "" {
+		mysqlDSN = "root@unix(/var/run/mysqld/mysqld.sock)/golang_sql_benchmarks"
+	}
+}
 
 // Attempts to compare different situations regarding use of prepared statements and/or interpolation
 // Use a fairly simple query, but one that allows us to use placeholders or not as per our individual benchmark
@@ -419,7 +427,7 @@ func benchmarkGorpSelectAllWithArgs(b *testing.B, limit int) {
 //
 
 func mysqlConn() *sql.DB {
-	db, err := sql.Open("mysql", MysqlDSN)
+	db, err := sql.Open("mysql", mysqlDSN)
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -431,7 +439,7 @@ func dbrSess() *dbr.Session {
 }
 
 func sqlxConn() *sqlx.DB {
-	db, err := sqlx.Connect("mysql", MysqlDSN)
+	db, err := sqlx.Connect("mysql", mysqlDSN)
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -439,7 +447,7 @@ func sqlxConn() *sqlx.DB {
 }
 
 func gorpConn() *gorp.DbMap {
-	db, err := sql.Open("mysql", MysqlDSN)
+	db, err := sql.Open("mysql", mysqlDSN)
 	if err != nil {
 		log.Fatalln(err)
 	}
