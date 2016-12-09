@@ -1,6 +1,7 @@
 {
 	"ImportPath": "github.com/tyler-smith/golang-sql-benchmark",
-	"GoVersion": "go1.4.1",
+	"GoVersion": "go1.7",
+	"GodepVersion": "v75",
 	"Deps": [
 		{
 			"ImportPath": "github.com/coopernurse/gorp",
@@ -18,7 +19,12 @@
 		},
 		{
 			"ImportPath": "github.com/jmoiron/sqlx",
-			"Comment": "sqlx-v1.0-67-g69738bd",
+			"Comment": "sqlx-v1.1",
+			"Rev": "69738bd209812c5a381786011aff17944a384554"
+		},
+		{
+			"ImportPath": "github.com/jmoiron/sqlx/reflectx",
+			"Comment": "sqlx-v1.1",
 			"Rev": "69738bd209812c5a381786011aff17944a384554"
 		},
 		{
