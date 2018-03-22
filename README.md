@@ -26,7 +26,7 @@ Each one is run with varying number of rows, N.
 * **BenchmarkDbrSelectAllN** - Select rows into structs using no query arguments
 * **BenchmarkDbrSelectAllWithArgsN** - Select rows into structs using query arguments
 
-# Dbr/Squrrel SQL Building Benchamrks
+# Dbr/Squrrel SQL Building Benchmarks
 Test building (but not executing) various SQL statements
 
 * **BenchmarkBuilderDbrSimple** - Simple SQL query with dbr
